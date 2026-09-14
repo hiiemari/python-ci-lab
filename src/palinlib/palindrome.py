@@ -13,11 +13,9 @@ def is_palindrome(text: str) -> bool:
     """
 
     text_length = len(text)
-    queue = []
     halfway = text_length // 2
 
-    for c in text[:halfway]:
-        queue.append(c)
+    queue = list(text[:halfway])
 
     if text_length % 2 == 0:
         for c in text[halfway:]:
