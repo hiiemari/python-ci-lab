@@ -11,15 +11,21 @@ def is_palindrome(text: str) -> bool:
         - "abba" is a palindrome; should return True.
         - "abcd" is not a palindrome; should return False.
     """
-    
+
+    text_length = len(text)
     queue = []
-    halfway = len(text) // 2
+    halfway = text_length // 2
 
     for c in text[:halfway]:
         queue.append(c)
-    
-    for c in text[halfway + 1:]:
-        if c != queue.pop():
-            return False
+
+    if text_length % 2 == 0:
+        for c in text[halfway:]:
+            if c != queue.pop():
+                return False
+    else:
+        for c in text[halfway + 1:]:
+            if c != queue.pop():
+                return False
         
     return True
